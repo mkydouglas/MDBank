@@ -1,0 +1,7 @@
+{
+  "name": "MDBank",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
