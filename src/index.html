@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Ionic App</title>
+  <title>MDBank</title>
 
   <base href="/" />
 
@@ -21,6 +21,26 @@
 
 <body>
   <app-root></app-root>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyA5TtPXo-4uULmdTl4-ZCKvyvnx6WbCt0k",
+      authDomain: "mdbank-655bb.firebaseapp.com",
+      projectId: "mdbank-655bb",
+      storageBucket: "mdbank-655bb.appspot.com",
+      messagingSenderId: "988823529495",
+      appId: "1:988823529495:web:58744d6ab508aa2a631452"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
 </body>
 
 </html>

@@ -1,17 +1,83 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar class="bg">
     <ion-title>
-      Tab 1
+      <app-logo></app-logo>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="bg">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Tab 1</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title (click)="teste()">Saldo</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      {{ contaCorrente?.saldo | currency: 'BRL'}}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col (click)="mudarOpcaoTransacao('sacar')">Sacar</ion-col>
+      <ion-col (click)="mudarOpcaoTransacao('depositar')">Depositar</ion-col>
+      <ion-col (click)="mudarOpcaoTransacao('transferir')">Transferir</ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-card *ngIf="mostrarOpcaoSacar">
+    <ion-card-header>
+      <ion-card-title>Sacar</ion-card-title>
+    </ion-card-header>
+    
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Valor:</ion-label>
+        <ion-input [(ngModel)]="valor"></ion-input>
+        <ion-icon name="arrow-redo-circle-outline" (click)="sacar()"></ion-icon>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="mostrarOpcaoDepositar">
+    <ion-card-header>
+      <ion-card-title>Depositar</ion-card-title>
+    </ion-card-header>
+    
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Valor:</ion-label>
+        <ion-input [(ngModel)]="valor"></ion-input>
+        <ion-icon name="arrow-redo-circle-outline" (click)="depositar()"></ion-icon>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="mostrarOpcaoTransferir">
+    <ion-card-header>
+      <ion-card-subtitle>*Nesta versão, o campo: Número da conta do destinatário, não será validado. Qualquer valor resultará na mesma conta.</ion-card-subtitle>
+      <ion-card-title>Transferir</ion-card-title>
+    </ion-card-header>
+    
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Valor:</ion-label>
+        <ion-input [(ngModel)]="valor"></ion-input>
+        <ion-icon name="arrow-redo-circle-outline" (click)="transferir()"></ion-icon>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Número da conta do destinatário:</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
+<div class="spinner" *ngIf="loading">
+  <ion-spinner name="lines" color="primary" class="ion-spinner"></ion-spinner>
+</div>

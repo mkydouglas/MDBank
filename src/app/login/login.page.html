@@ -1,0 +1,31 @@
+<ion-header>
+	<ion-toolbar class="bg">
+		<ion-title>
+			<app-logo></app-logo>
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="bg">
+	<ion-card>
+		<ion-card-header>
+			<ion-card-subtitle>*Nesta versão, o login não será validado. Qualquer login resultará na mesma conta.</ion-card-subtitle>
+			<ion-card-title>Login</ion-card-title>
+			<ion-card-content>
+				<form [formGroup]="formGroup" (submit)="onSubmit()">
+					<ion-item>
+						<ion-label position="floating">CPF</ion-label>
+						<ion-input formControlName="cpf" autofocus><ion-icon name="person-outline"></ion-icon></ion-input>
+						<small *ngIf="!formGroup.get('cpf').valid && formGroup.touched">CPF inválido!</small>
+					</ion-item>
+					<ion-item>
+						<ion-label position="floating">Senha</ion-label>
+						<ion-input formControlName="senha" type="password"><ion-icon name="lock-closed-outline"></ion-icon></ion-input>
+						<small *ngIf="!formGroup.get('senha').valid && formGroup.touched">Senha inválida!</small>
+					</ion-item>
+					<ion-button type="submit" class="bg">Acessar conta</ion-button>
+				</form>
+			</ion-card-content>
+		</ion-card-header>
+	</ion-card>
+</ion-content>
